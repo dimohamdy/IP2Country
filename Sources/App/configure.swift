@@ -19,7 +19,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
 
     // Configure a SQLite database
 
-    let path = DirectoryConfig.detect().workDir + "ip2country.db"
+    let path = DirectoryConfig.detect().workDir + "IPCountry_Range.db"
     let sqlite: SQLiteDatabase
     do {
         sqlite = try SQLiteDatabase(storage: .file(path: path))
@@ -35,7 +35,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
 
     
     var migrations = MigrationConfig()
-    migrations.add(model: IPNation.self, database: .sqlite)
+    migrations.add(model: IPRange.self, database: .sqlite)
     migrations.add(model: Country.self, database: .sqlite)
     services.register(migrations)
 }
