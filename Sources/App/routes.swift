@@ -15,12 +15,14 @@ public func routes(_ router: Router) throws {
 //
 //    router.get(use: ipContryController.index)
     
-    
+    router.get { req in
+        return "It works!"
+    }
 
     
-        router.get { req -> Future<IPRange> in
-          return IPRange.query(on: req).first().unwrap(or: Abort.init(HTTPResponseStatus.notFound))
-    }
+//        router.get { req -> Future<IPRange> in
+//          return IPRange.query(on: req).first().unwrap(or: Abort.init(HTTPResponseStatus.notFound))
+//    }
     
 }
 
