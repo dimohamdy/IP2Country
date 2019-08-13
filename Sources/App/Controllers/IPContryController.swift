@@ -21,14 +21,17 @@ final class IPContryController {
         })
     }
     
+    //you can read how to convert IP adress to Decimal
+    //https://itstillworks.com/convert-ip-addresses-decimal-format-7611714.html
      private func convertIPtoLong(ipAdress:String) -> Int {
         
         let numbers = ipAdress.components(separatedBy: ["."]).compactMap { Decimal(string:$0) }
         var sum: Decimal = 0
         
         for (index ,number) in numbers.enumerated() {
-            let power = 3 - index;
-           sum += number * pow(256,power)
+            let powerValue = 3 - index
+            let powerResultOfIPSlot = Decimal(pow(Double(256),Double(powerValue)))
+            sum += number * powerResultOfIPSlot
         }
         let result = NSDecimalNumber(decimal: sum).intValue
         return  result
